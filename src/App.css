@@ -463,3 +463,61 @@ body {
   font-size: 11px;
   line-height: 1.4;
 }
+/* === Global text sizing (smaller, balanced) === */
+
+/* Base text */
+.page {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Headings */
+.header h1 {
+  font-size: 20px;
+}
+
+.title {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+/* Form + UI text */
+.label {
+  font-size: 12px;
+}
+
+.input {
+  font-size: 12px;
+}
+
+.btn {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+/* Pokémon info text */
+.pokemonCard p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+/* Flavor text slightly smaller */
+.pokemonCard p:last-of-type {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Type badges */
+.typeBadge {
+  font-size: 10px;
+  padding: 4px 8px;
+}
+
+/* Party text */
+.partyTitle {
+  font-size: 12px;
+}
+
+.partyName {
+  font-size: 9px;
+}
