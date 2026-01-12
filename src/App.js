@@ -1,23 +1,18 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="page">
+      <header className="header">
+        <h1>Pokémon Randomiser</h1>
+        <p>Generate a random Pokémon or search by name/ID.</p>
       </header>
+
+      <main className="main">
+        <div className="card">
+          <p>UI coming next…</p>
+        </div>
+      </main>
     </div>
   );
 }
