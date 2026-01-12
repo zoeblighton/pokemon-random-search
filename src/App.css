@@ -65,3 +65,42 @@
 .title {
   margin-top: 0;
 }
+
+.pokemonCard {
+  display: grid;
+  gap: 12px;
+}
+
+.pokemonTop {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sprite {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.pokemonHeading {
+  display: grid;
+  gap: 8px;
+}
+
+.typeRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.typeBadge {
+  display: inline-block;
+  border: 1px solid #bbb;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}

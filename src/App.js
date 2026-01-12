@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import "./App.css";
-import { fetchPokemonSpecies } from "./api/pokeapi";
+import { fetchPokemon, fetchPokemonSpecies } from "./api/pokeapi";
 
 function pickEnglishFlavorText(entries = []) {
   const english = entries.filter((e) => e.language?.name === "en");
@@ -10,8 +10,9 @@ function pickEnglishFlavorText(entries = []) {
 
 function App() {
   const [query, setQuery] = useState("");
-  const [pokemon, setPokemon] = useState(null);
-  const [status, setStatus] = useState("idle");
+  const [pokemon, setPokemon] = useState(null); // species data
+  const [pokemonDetails, setPokemonDetails] = useState(null); // /pokemon data
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [error, setError] = useState("");
 
   const abortRef = useRef(null);
@@ -27,15 +28,18 @@ function App() {
       setError("");
       setStatus("loading");
       setPokemon(null);
+      setPokemonDetails(null);
 
       abortRef.current?.abort();
       abortRef.current = new AbortController();
 
-      const data = await fetchPokemonSpecies(idOrName, {
-        signal: abortRef.current.signal,
-      });
+      const [speciesData, pokemonData] = await Promise.all([
+        fetchPokemonSpecies(idOrName, { signal: abortRef.current.signal }),
+        fetchPokemon(idOrName, { signal: abortRef.current.signal }),
+      ]);
 
-      setPokemon(data);
+      setPokemon(speciesData);
+      setPokemonDetails(pokemonData);
       setStatus("success");
     } catch (e) {
       if (e.name === "AbortError") return;
@@ -57,6 +61,18 @@ function App() {
   const flavor = pokemon
     ? pickEnglishFlavorText(pokemon.flavor_text_entries)
     : "";
+
+  const sprite =
+    pokemonDetails?.sprites?.other?.["official-artwork"]?.front_default ||
+    pokemonDetails?.sprites?.front_default ||
+    "";
+
+  const types = pokemonDetails?.types
+    ? pokemonDetails.types
+        .slice()
+        .sort((a, b) => a.slot - b.slot)
+        .map((t) => t.type.name)
+    : [];
 
   return (
     <div className="page">
@@ -102,11 +118,34 @@ function App() {
         <div className="card">
           {!pokemon && status !== "loading" && <p>No Pokémon loaded yet.</p>}
 
-          {pokemon && (
-            <div>
-              <h2 className="title">
-                #{pokemon.id} — {pokemon.name}
-              </h2>
+          {pokemon && pokemonDetails && (
+            <div className="pokemonCard">
+              <div className="pokemonTop">
+                {sprite && (
+                  <img
+                    className="sprite"
+                    src={sprite}
+                    alt={pokemon.name}
+                    loading="lazy"
+                  />
+                )}
+
+                <div className="pokemonHeading">
+                  <h2 className="title">
+                    #{pokemon.id} — {pokemon.name}
+                  </h2>
+
+                  {types.length > 0 && (
+                    <div className="typeRow">
+                      {types.map((t) => (
+                        <span key={t} className="typeBadge">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
 
               <p>
                 <strong>Generation:</strong> {pokemon.generation?.name}
