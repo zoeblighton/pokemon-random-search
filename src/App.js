@@ -138,7 +138,7 @@ function App() {
                   {types.length > 0 && (
                     <div className="typeRow">
                       {types.map((t) => (
-                        <span key={t} className="typeBadge">
+                        <span key={t} className={`typeBadge type-${t}`}>
                           {t}
                         </span>
                       ))}

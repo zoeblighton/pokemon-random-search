@@ -104,3 +104,131 @@
   font-size: 12px;
   text-transform: uppercase;
 }
+
+/* --- Card polish --- */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.header p {
+  margin-top: 8px;
+  opacity: 0.85;
+}
+
+/* --- Pokemon layout --- */
+.pokemonCard {
+  display: grid;
+  gap: 12px;
+}
+
+.pokemonTop {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (max-width: 540px) {
+  .pokemonTop {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sprite {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  border-radius: 16px;
+  background: #f6f6f6;
+  border: 1px solid #e5e5e5;
+  padding: 10px;
+}
+
+.pokemonHeading {
+  display: grid;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+/* --- Type badges --- */
+.typeRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.typeBadge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #eee;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Type colors (simple + readable) */
+.type-normal {
+  background: #d6d6c2;
+}
+.type-fire {
+  background: #ffb36b;
+}
+.type-water {
+  background: #8fc7ff;
+}
+.type-electric {
+  background: #ffe36a;
+}
+.type-grass {
+  background: #9fe38f;
+}
+.type-ice {
+  background: #bff3ff;
+}
+.type-fighting {
+  background: #ff9b9b;
+}
+.type-poison {
+  background: #d6a4ff;
+}
+.type-ground {
+  background: #f0d28f;
+}
+.type-flying {
+  background: #c7c7ff;
+}
+.type-psychic {
+  background: #ffb3da;
+}
+.type-bug {
+  background: #cfe879;
+}
+.type-rock {
+  background: #e1c48b;
+}
+.type-ghost {
+  background: #c1b3ff;
+}
+.type-dragon {
+  background: #b3a0ff;
+}
+.type-dark {
+  background: #b0b0b0;
+}
+.type-steel {
+  background: #d8d8e8;
+}
+.type-fairy {
+  background: #ffd1f0;
+}
