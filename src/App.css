@@ -307,9 +307,88 @@ body {
 }
 
 .gameboy .title {
-  font-size: 18px; /* slightly smaller so it doesn't crowd */
+  font-size: 18px;
 }
 
 .sprite {
   margin-top: 2px;
+}
+
+.party {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px solid rgba(75, 95, 59, 0.35);
+}
+
+.partyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.partyTitle {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.partyBtn {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.partyGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .partyGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.partySlot {
+  border: 2px solid #4b5f3b;
+  background: #c7d1a9;
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  min-height: 92px;
+  display: grid;
+  gap: 6px;
+  align-content: center;
+}
+
+.partySlot:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.partySprite {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  margin: 0 auto;
+  display: block;
+}
+
+.partyName {
+  font-size: 10px;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.partyEmpty {
+  font-size: 18px;
+  opacity: 0.7;
 }
