@@ -10,9 +10,9 @@ function pickEnglishFlavorText(entries = []) {
 
 function App() {
   const [query, setQuery] = useState("");
-  const [pokemon, setPokemon] = useState(null); // species data
-  const [pokemonDetails, setPokemonDetails] = useState(null); // /pokemon data
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [pokemon, setPokemon] = useState(null);
+  const [pokemonDetails, setPokemonDetails] = useState(null);
+  const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
 
   const abortRef = useRef(null);
@@ -115,7 +115,7 @@ function App() {
           {status === "error" && <p className="error">Error: {error}</p>}
         </form>
 
-        <div className="card">
+        <div className="card gameboy">
           {!pokemon && status !== "loading" && <p>No Pokémon loaded yet.</p>}
 
           {pokemon && pokemonDetails && (
