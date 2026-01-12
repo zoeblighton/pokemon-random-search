@@ -392,12 +392,74 @@ body {
   font-size: 18px;
   opacity: 0.7;
 }
-.appScale {
-  transform: scale(0.85);
-  transform-origin: top center;
+/* === Option B: real sizing (no transform) === */
+
+.page {
+  padding: 16px;
+  max-width: 720px;
 }
 
-/* Because scaling shrinks, give it a little less empty space */
-.page.appScale {
-  padding-top: 10px;
+/* slightly tighter spacing overall */
+.main {
+  gap: 12px;
+}
+
+.header {
+  margin-bottom: 14px;
+}
+
+/* make the “screen” a bit smaller */
+.pokemonTop {
+  grid-template-columns: 150px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.sprite {
+  width: 140px;
+  height: 140px;
+  padding: 8px;
+}
+
+/* reduce title size slightly */
+.title {
+  font-size: 16px;
+}
+
+/* party sizing */
+.partyGrid {
+  gap: 8px;
+}
+
+.partySlot {
+  min-height: 78px;
+  padding: 6px;
+}
+
+.partySprite {
+  width: 44px;
+  height: 44px;
+}
+
+.partyName {
+  font-size: 9px;
+}
+
+/* gameboy shell tightened */
+.gameboy {
+  padding: 18px;
+}
+
+.gameboy .pokemonCard {
+  padding: 14px;
+}
+.pokemonCard p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+/* Flavor text slightly smaller */
+.pokemonCard p:last-of-type {
+  font-size: 11px;
+  line-height: 1.4;
 }
