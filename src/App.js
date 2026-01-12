@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 import { fetchPokemon, fetchPokemonSpecies } from "./api/pokeapi";
 
@@ -25,10 +25,6 @@ function App() {
   const abortRef = useRef(null);
 
   const maxId = 1025;
-  const randomId = useMemo(
-    () => Math.floor(Math.random() * maxId) + 1,
-    [pokemon]
-  );
 
   async function loadSpecies(idOrName) {
     try {
@@ -95,7 +91,9 @@ function App() {
   }
 
   async function onRandom() {
-    const result = await loadSpecies(randomId);
+    const id = Math.floor(Math.random() * maxId) + 1;
+    const result = await loadSpecies(id);
+
     if (result?.speciesData && result?.pokemonData) {
       addToParty(result.speciesData, result.pokemonData);
     }
